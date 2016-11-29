@@ -1,0 +1,45 @@
+{
+  "name": "dailies-weeklies-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "webpack --watch",
+    "lint": "eslint *.js",
+    "build": "webpack --optimize-minimize --optimize-occurrence-order"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.15.2",
+    "datejs": "^1.0.0-rc3",
+    "electron": "^1.4.4",
+    "exceljs": "^0.2.36",
+    "firebase": "^3.5.3",
+    "flux": "^3.1.0",
+    "guid": "0.0.12",
+    "material-ui": "^0.16.1",
+    "querystring": "^0.2.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-tap-event-plugin": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "eslint": "^3.8.1",
+    "eslint-loader": "^1.6.0",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1",
+    "json-loader": "^0.5.4",
+    "webpack": "^1.13.2",
+    "webpack-node-externals": "^1.5.4",
+    "webpack-target-electron-renderer": "^0.4.0"
+  }
+}

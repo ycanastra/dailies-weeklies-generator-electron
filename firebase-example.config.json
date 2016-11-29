@@ -1,0 +1,7 @@
+{
+  "apiKey": "API-KEY",
+  "authDomain": "AUTH-DOMAIN",
+  "databaseURL": "DATABASE-URL",
+  "storageBucket": "STORAGE-BUCKET",
+  "messagingSenderId": "MESSAGING-SENDER-ID"
+}
