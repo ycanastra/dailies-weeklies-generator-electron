@@ -3,7 +3,7 @@ import Excel from 'exceljs';
 // Helpers
 function getDateFromEpoch(epochTime) {
   const date = new Date(0);
-  date.setSeconds(epochTime);
+  date.setUTCSeconds(epochTime);
   return date;
 }
 function applyColumnBorders(worksheet, startRow, endRow, column) {
@@ -125,15 +125,15 @@ export default class DailiesGenerator {
   }
   getRowFromEpoch(epochTime) {
     const date = new Date(0);
-    date.setSeconds(epochTime);
+    date.setUTCSeconds(epochTime);
 
     const hours = date.getHours();
     const minutes = date.getMinutes();
 
     const scheduleStart = new Date(0);
     const scheduleEnd = new Date(0);
-    scheduleStart.setSeconds(this.schedule.start);
-    scheduleEnd.setSeconds(this.schedule.end);
+    scheduleStart.setUTCSeconds(this.schedule.start);
+    scheduleEnd.setUTCSeconds(this.schedule.end);
 
     const startHour = scheduleStart.getHours();
     const startMinutes = scheduleStart.getMinutes();
@@ -222,7 +222,7 @@ export default class DailiesGenerator {
   createTimeColumn(worksheet, column) {
     const ws = worksheet;
     const date = new Date(0);
-    date.setSeconds(this.schedule.start);
+    date.setUTCSeconds(this.schedule.start);
 
     this.createHeader(ws, 'Time', column);
     this.setInitialColumnFormat(ws, column);

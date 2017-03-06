@@ -2,7 +2,7 @@ import Excel from 'exceljs';
 
 function getDateFromEpoch(epochTime) {
   const date = new Date(0);
-  date.setSeconds(epochTime);
+  date.setUTCSeconds(epochTime);
   return date;
 }
 function applyColumnBorders(worksheet, startRow, endRow, column) {
@@ -133,7 +133,7 @@ export default class WeekliesGenerator {
   }
   getRowFromEpoch(epochTime) {
     const date = new Date(0);
-    date.setSeconds(epochTime);
+    date.setUTCSeconds(epochTime);
 
     const hours = date.getHours();
     const minutes = date.getMinutes();
@@ -143,7 +143,7 @@ export default class WeekliesGenerator {
   }
   getColumnFromEpoch(epochTime) {
     const date = new Date(0);
-    date.setSeconds(epochTime);
+    date.setUTCSeconds(epochTime);
 
     const column = date.getDay() + this.MIN_ROW + 1;
     return column;
