@@ -260,9 +260,12 @@ export default class DailiesGenerator {
     this.setInitialColumnFormat(ws, column);
     ws.getColumn(column).width = 12;
 
-    const shiftEvents = this.shifts.filter(shift => (
-      shift.location.toLowerCase() === shiftLocation.toLowerCase()
-    ));
+    const shiftEvents = this.shifts.filter((shift) => {
+      if (shift.location === undefined) {
+        return false;
+      }
+      return shift.location.toLowerCase() === shiftLocation.toLowerCase();
+    });
 
     shiftEvents.forEach(shiftEvent => this.insertShiftEvent(ws, shiftEvent, column));
   }
