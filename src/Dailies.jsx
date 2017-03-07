@@ -70,13 +70,13 @@ export default class Dailies extends React.Component {
                     this.setState({ snackbarOpen: true });
                   })
                   .catch((error) => {
-                    alert(error, 'Error');
+                    this.setState({ isGenerating: false });
+                    alert(error.toString(), 'Error');
                   });
                 });
               }).catch((error) => {
                 this.setState({ isGenerating: false });
-                alert(`${error}\nTry verifying the calendar id is correct and ` +
-                  'making sure the collaborate lab schedule site is up', 'Error');
+                alert(error.toString());
               });
             }}
           />
