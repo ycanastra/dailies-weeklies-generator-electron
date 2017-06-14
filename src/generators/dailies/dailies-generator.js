@@ -35,14 +35,14 @@ function formatLabEventCells(worksheet, startRow, endRow, column, labEvent) {
       horizontal: 'center',
       wrapText: true,
     };
-    if (eventName === 'OPEN') {
+    if (eventName.trim() === 'OPEN') {
       const argb = (((i - 1) % 4) === 0 || ((i - 1) % 4) === 1) ? 'FFFFFFFF' : 'FFE6E6FF';
       ws.getCell(i, column).fill = {
         type: 'pattern',
         pattern: 'solid',
         fgColor: { argb },
       };
-    } else if (eventName !== 'CLOSED') {
+    } else if (eventName.trim() !== 'CLOSED') {
       ws.getCell(i, column).fill = {
         type: 'pattern',
         pattern: 'solid',
@@ -266,7 +266,7 @@ export default class DailiesGenerator {
       if (shift.location === undefined) {
         return false;
       }
-      return shift.location.toLowerCase() === shiftLocation.toLowerCase();
+      return shift.location.toLowerCase().trim() === shiftLocation.toLowerCase().trim();
     });
 
     shiftEvents.forEach(shiftEvent => this.insertShiftEvent(ws, shiftEvent, column));
@@ -293,7 +293,7 @@ export default class DailiesGenerator {
     // which causes formatting to overwrite rows that are greater than this.MAX_ROW
     const endRow = parseInt(Math.min(this.getRowFromEpoch(labEvent.endTime) - 1, this.MAX_ROW), 10);
 
-    if (name !== 'OPEN' && name !== 'CLOSED') {
+    if (name.trim() !== 'OPEN' && name.trim() !== 'CLOSED') {
       const startTimeStr = getDateFromEpoch(labEvent.startTime).toString('h:mm');
       const endTimeStr = getDateFromEpoch(labEvent.endTime).toString('h:mm');
       ws.getCell(endRow, column).value = `${startTimeStr}-${endTimeStr}`;
