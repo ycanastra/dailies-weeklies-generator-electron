@@ -105,10 +105,12 @@ export default class DailiesGenerator {
       this.createTimeColumn(worksheet, currentColumn);
       currentColumn += 1;
 
-      labLocations.sort().forEach((labLocation) => {
-        this.createLabColumn(worksheet, labLocation, currentColumn);
-        currentColumn += 1;
-      });
+      labLocations.sort()
+        .filter(labLocation => this.schedule.labs.map(lab => lab.name).includes(labLocation))
+        .forEach((labLocation) => {
+          this.createLabColumn(worksheet, labLocation, currentColumn);
+          currentColumn += 1;
+        });
       shiftLocations.sort().forEach((shiftLocation) => {
         this.createShiftColumn(worksheet, shiftLocation, currentColumn);
         currentColumn += 1;
