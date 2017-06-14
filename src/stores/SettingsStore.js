@@ -1,4 +1,4 @@
-import { EventEmitter } from 'events' ;
+import { EventEmitter } from 'events';
 import Firebase from 'firebase';
 import Guid from 'guid';
 
